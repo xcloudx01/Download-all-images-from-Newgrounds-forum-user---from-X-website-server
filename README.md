@@ -13,3 +13,4 @@ If the pages are numbered, you can assign how many loops to go through. Or you c
 2. Open the .ahk file in your text editor of choice.
 3. Adjust the "User vars" section to suit your needs.
 4. Optionally: comment out the "Looping page count" section and uncomment "Loop through .txt file" section, depending on your needs.
+5. Double-click and run the .ahk file.
