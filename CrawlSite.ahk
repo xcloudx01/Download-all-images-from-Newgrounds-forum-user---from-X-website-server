@@ -48,10 +48,10 @@ SaveOnlyFilesFromGoalServer(URL,FileURL)
 	HtmlFile := A_Temp . "\TempFile.html"
 	URLDownloadToFile,% URL,%HtmlFile%
 	Fileread,FileContents,%HtmlFile%
-	if Instr(FileContents,FileURL)
+	if Instr(FileContents,FileURL) ;Only want to download things that are from our server of interest.
 		DownloadFiles(HtmlFile,URL)
 	else
-		filedelete,%A_Temp%\TempFile.html
+		filedelete,%A_Temp%\TempFile.html ;This HTML page contained nothing of interest, so remove it and try the next one.
 }
 
 DownloadFiles(InputHTML,URL)
@@ -59,6 +59,7 @@ DownloadFiles(InputHTML,URL)
 	global ServerURLOfInterest
 	global DownloadFolder
 	FilesArray := []
+	
 	Loop, read, % InputHTML
 	{
 		If !(A_LoopReadLine) or !(Instr(A_LoopReadLine,ServerURLOfInterest)) ;Skip blank lines in the HTML file.
